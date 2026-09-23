@@ -1,0 +1,244 @@
+/* ==========================================================================
+   1. CONFIGURATION RACINAIRE ET PARAMÈTRES CHROMATIQUES
+   ========================================================================== */
+:root {
+  /* Typographie fluide : calculée de 16px (à 320px) à 22px (à 1200px) */
+  font-size: clamp(1rem, 0.8636rem + 0.6818vw, 1.375rem);
+  
+  /* Égalisation internationale de la hauteur d’œil à 50% du corps total */
+  font-size-adjust: 0.5;
+
+  /* Palette chromatique accessible (Contraste supérieur à 4.5:1) */
+  --Couleur-fond: #fcfcf9;
+  --Couleur-texte: #1c1a17;
+  --Couleur-accent: #5c4d3c;
+  --Couleur-bordure: #e6e3dc;
+}
+
+/* Support du mode sombre automatique respectant les préférences système */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --Couleur-fond: #121110;
+    --Couleur-texte: #e8e6e1;
+    --Couleur-accent: #bdae9c;
+    --Couleur-bordure: #2d2b28;
+  }
+}
+
+/* ==========================================================================
+   2. RÉINITIALISATION SÉMANTIQUE ET GRILLE FLUIDE INTRINSÈQUE
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--Couleur-fond);
+  color: var(--Couleur-texte);
+  
+  /* Moteur de rendu typographique haut de gamme */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  /* Configuration d’un agencement vertical fluide poussant le footer vers le bas */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   3. STRUCTURE INTRINSÈQUE DU BLOC DE TEXTE (CALÉE À 50CH)
+   ========================================================================== */
+header, main, footer {
+  /* Alignement horizontal intrinsèque s’adaptant à la police sans media query.
+     La colonne centrale est fixée à 50ch pour garantir 65 caractères réels par ligne. */
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(auto, 50ch) minmax(1rem, 1fr);
+}
+
+/* Force les éléments enfants directs à s’aligner dans la colonne centrale de 50ch */
+header > *, main > *, footer > * {
+  grid-column: 2;
+}
+
+header {
+  padding-block: 2em;
+  border-bottom: 1px solid var(--Couleur-bordure);
+}
+
+footer {
+  padding-block: 2em;
+  margin-top: 4em;
+  border-top: 1px solid var(--Couleur-bordure);
+  font-size: 0.85em;
+}
+
+/* ==========================================================================
+   4. RÈGLES DE CONFORT VISUEL (READABILITY)
+   ========================================================================== */
+h1, h2, h3 {
+  color: var(--Couleur-accent);
+  line-height: 1.2;
+  margin-block-start: 1.5em;
+  margin-block-end: 0.5em;
+}
+
+h1 { margin-block-start: 0; }
+
+p, li {
+  /* Interlignage protecteur pour s’accorder au ratio font-size-adjust global */
+  line-height: 1.65;
+  margin-block-end: 1.25em;
+  
+  /* Activation des fonctionnalités de micro-typographie native */
+  font-variant-numeric: oldstyle-nums;
+  font-variant-ligatures: common-ligatures;
+}
+
+ul {
+  padding-inline-start: 1.5em;
+  margin-block-end: 1.5em;
+}
+
+li {
+  margin-block-end: 0.5em;
+}
+
+strong {
+  color: var(--Couleur-accent);
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.9em;
+  background-color: var(--Couleur-bordure);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size-adjust: none; /* Empêche le forçage du ratio 0.5 sur le code informatique */
+}
+
+/* ==========================================================================
+   5. CITATIONS LONGUES SÉMANTIQUES (BLOCKQUOTE)
+   ========================================================================== */
+blockquote {
+  margin-block: 2.5em;
+  margin-inline: 0;
+  padding-inline-start: 1.25em;
+  border-left: 3px solid var(--Couleur-accent);
+}
+
+blockquote p {
+  font-style: italic;
+  margin-block-end: 0.5em;
+}
+
+blockquote footer {
+  display: block;
+  padding-block: 0;
+  margin-top: 0;
+  border-top: none;
+  font-size: 0.9em;
+  color: var(--Couleur-accent);
+}
+
+blockquote footer cite {
+  font-style: normal;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   6. MICRO-TYPOGRAPHIE ÉDITORIALE FRANÇAISE
+   ========================================================================== */
+/* Vraies petites capitales sémantiques pour les siècles ou sigles */
+abbr, [style*="small-caps"] {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+/* Vrais exposants via la balise sémantique <sup> sans déformer l’interlignage */
+sup {
+  vertical-align: baseline;
+  font-size: unset;
+  font-variant-position: superscript;
+}
+
+/* ==========================================================================
+   7. ÉLÉMENTS INTERACTIFS ET ACCESSIBILITÉ (NIVEAU AA)
+   ========================================================================== */
+
+/* --- RÈGLE UNIVERSELLE DE FOCUS CLAVIER (WCAG 2.4.11 / 2.4.13) --- */
+:focus-visible {
+  outline: 3px solid var(--Couleur-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- LIENS HYPERTEXTES (<a>) --- */
+a {
+  color: var(--Couleur-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-thickness 0.2s ease;
+}
+
+a:hover {
+  color: var(--Couleur-texte);
+  text-decoration-thickness: 2px;
+}
+
+/* --- BOUTONS SÉMANTIQUES (<button>) --- */
+button {
+  font-family: inherit;
+  font-size: 0.9em;
+  font-weight: 500;
+  background-color: var(--Couleur-accent);
+  color: var(--Couleur-fond); /* Inversion chromatique pour haut contraste */
+  border: 1px solid var(--Couleur-accent);
+  padding: 0.6em 1.2em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--Couleur-texte);
+  border-color: var(--Couleur-texte);
+}
+
+/* --- ACCORDÉONS SÉMANTIQUES (<details> & <summary>) --- */
+details {
+  background-color: transparent;
+  border: 1px solid var(--Couleur-bordure);
+  border-radius: 6px;
+  padding: 0.75em 1em;
+  margin-block-end: 1.5em;
+  transition: border-color 0.2s ease;
+}
+
+details[open] {
+  border-color: var(--Couleur-accent);
+}
+
+summary {
+  font-weight: 600;
+  color: var(--Couleur-accent);
+  cursor: pointer;
+  padding: 0.25em 0;
+  /* Amélioration de l'espacement de la flèche native */
+  list-style-position: outside; 
+}
+
+summary:hover {
+  color: var(--Couleur-texte);
+}
+
+/* Espacement du contenu sémantique interne à l'accordéon une fois ouvert */
+details > :not(summary) {
+  margin-block-start: 1em;
+  margin-block-end: 0;
+}
