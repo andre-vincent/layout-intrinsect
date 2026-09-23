@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mise en page intrinsèque, sémantique et fluide</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <p>Transcription Typographique Spécialisée</p>
+  </header>
+
+  <main>
+    <article>
+      <h1>Mise en page intrinsèque, sémantique et accessible</h1>
+      
+      <p>La mise en page intrinsèque et sémantique marque la fin de l’ère où le design web tentait de calquer de force des grilles rigides héritées du papier (comme les maquettes au pixel près ou les structures à colonnes fixes). En relation avec une typographie soignée et fluide, ce concept stipule que&#160;<strong>c’est le contenu sémantique lui-même&#160;—&#160;et les exigences de sa police de caractères&#160;—&#160;qui dictent les proportions, les espacements et les points de rupture de la mise en page</strong>, et non l’inverse.</p>
+
+      <h2>1. Le concept de Mise en Page Intrinsèque (Intrinsic Layout)</h2>
+      <p>Théorisée par les experts du web, la mise en page intrinsèque exploite les technologies <code>Grid Layout</code>, <code>Flexbox</code>, et les fonctions mathématiques pour permettre au texte de s’auto-organiser selon ses propres contraintes physiques&#160;&#160;:</p>
+      <ul>
+        <li><strong>L’abandon des requêtes médias (Media Queries) arbitraires&#160;:</strong> Au lieu de casser une mise en page à des largeurs d’écrans fixes (comme 768px ou 1024px), la mise en page intrinsèque utilise l’élasticité naturelle des conteneurs. Le bloc de texte s’ajuste uniquement lorsque l’espace physique vient à manquer.</li>
+        <li><strong>La souveraineté de l’unité de chasse (ch)&#160;:</strong> Pour respecter scrupuleusement le critère de lisibilité de 60 à 75 caractères maximum par ligne, le conteneur de texte ne s’exprime plus en pourcentages ou en pixels fixes, mais via la propriété <code>max-width: 50ch</code>. La largeur du bloc devient dépendante de la police&#160;: si vous basculez vers une famille typographique plus large, le conteneur s’élargit de lui-même pour maintenir le nombre optimal de caractères par ligne.</li>
+      </ul>
+
+      <blockquote>
+        <p>
+          «&#x202F;Le design web intrinsèque ne consiste pas à concevoir des pages qui s’adaptent 
+          aux dimensions de l’écran, mais à donner au texte le pouvoir de négocier son propre espace 
+          avec le navigateur. C’est la sémantique qui reprend ses droits sur le pixel.&#x202F;»
+        </p>
+        <footer>
+          <cite>—&#160;Jen Simmons, Spécialiste des Standards Web</cite>
+        </footer>
+      </blockquote>
+
+      <h2>2. Le concept de Mise en Page Sémantique</h2>
+      <p>La sémantique consiste à utiliser les balises pour ce qu’elles signifient structurellement et non pour leur aspect graphique par défaut. En typographie soignée, cela garantit que la hiérarchie visuelle correspond exactement à la hiérarchie logique décodée par les technologies d’assistance.</p>
+      <ul>
+        <li><strong>Séparation stricte du fond et de la forme&#160;:</strong> Les titres sont gérés de manière fluide en reliant l’axe de graisse variable (<code>wght</code>) et l’axe optique (<code>opsz</code>) aux unités de l’écran, sans altérer l’arborescence <span style="font-variant-caps: small-caps;">html</span>.</li>
+        <li><strong>Préservation des fonctionnalités OpenType&#160;:</strong> L’usage de balises sémantiques ciblées permet d’injecter des styles micro-typographiques précis (comme les chiffres elzéfiriens dans le corps de texte ou les vrais exposants) sans polluer le code de classes superflues.</li>
+      </ul>
+
+      <h2>3. Les relations fondamentales avec la Lisibilité et l’Accessibilité</h2>
+      <p>Cette approche moderne répond directement aux critères internationaux d’accessibilité numérique de l’Initiative pour l’Accessibilité du Web (<abbr title="Web Accessibility Initiative">WAI</abbr>)&#160;:</p>
+      
+      <h3>A. Le zoom adaptatif et le non-chevauchement</h3>
+      <p>Les directives exigent que le texte puisse être agrandi jusqu’à 200% sans perte de contenu. En mise en page intrinsèque, comme l’interlignage (<code>line-height</code>) et la hauteur d’œil (<code>font-size-adjust: 0.5</code>) sont proportionnels et non figés, le texte s’expanse en repoussant proprement les blocs environnants sans collision verticale.</p>
+
+      <h3>B. La fluidité textuelle sans défilement horizontal (Reflow)</h3>
+      <p>Sur un écran de smartphone ou pour un utilisateur souffrant de basse vision qui zoome fortement, le texte ne doit jamais obliger à un défilement horizontal. L’utilisation combinée de la typographie fluide via la fonction <code>clamp()</code> force le texte à se réorganiser verticalement de manière parfaitement naturelle.</p>
+
+      <h3>C. L’espacement personnalisé par l’utilisateur</h3>
+      <p>Les utilisateurs dyslexiques ou malvoyants utilisent souvent des extensions pour forcer un interlignage plus grand ou un espacement des lettres accru. Le design sémantique et classless accepte nativement ces modifications sans briser la structure globale de l’interface.</p>
+
+      <h2>4. Application micro-typographique et interactivité</h2>
+      <p>Grâce à cette architecture, l’affichage respecte les règles les plus strictes de l’Imprimerie Nationale. Par exemple, la composition du <span style="font-variant-caps: small-caps;">xxi</span><sup>e</sup>&#x202F;siècle utilise de vraies petites capitales. Pour tester l’interactivité de niveau <abbr title="Niveau Double A de conformité">AA</abbr>, vous pouvez interagir avec le <a href="https://fontsource.org">catalogue officiel de Fontsource</a> ou déclencher l’action ci-dessous&#160;:</p>
+
+      <p><button type="button">Valider la conformité</button></p>
+
+      <details>
+        <summary>Informations techniques sur le focus clavier</summary>
+        <p>L’indicateur de focus utilise la propriété <code>:focus-visible</code>. Cela permet d’afficher un contour de haute visibilité uniquement lorsque l’utilisateur navigue avec la touche Tabulation du clavier, évitant ainsi de surcharger visuellement l’interface pour les utilisateurs utilisant une souris.</p>
+      </details>
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2026 — Document composé selon les standards de la mise en page intrinsèque.</p>
+  </footer>
+
+</body>
+</html>
