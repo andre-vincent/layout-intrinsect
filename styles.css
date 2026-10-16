@@ -55,7 +55,7 @@ header, main, footer {
   /* Alignement horizontal intrinsèque s’adaptant à la police sans media query.
      La colonne centrale est fixée à 50ch pour garantir 65 caractères réels par ligne. */
   display: grid;
-  grid-template-columns: minmax(1rem, 1fr) minmax(auto, 50ch) minmax(1rem, 1fr);
+  grid-template-columns: minmax(1rem, 1fr) minmax(auto, 55ch) minmax(1rem, 1fr);
 }
 
 /* Force les éléments enfants directs à s’aligner dans la colonne centrale de 50ch */
